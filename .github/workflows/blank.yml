@@ -1,0 +1,24 @@
+name: my_workflow
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+  pull_request:
+    branches:
+      - master
+      - develop
+    types:
+      - opened
+      - edited
+  schedule:
+    - cron: '0 * * */1 *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show helo world world
+        run: echo "Hello World! today is $(date)"
